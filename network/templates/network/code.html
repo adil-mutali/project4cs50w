@@ -1,0 +1,28 @@
+<!--Edit Area-->
+<div id="spaceedit">
+<textarea id="editarea"></textarea>
+<button id="save">Save</button>
+</div>
+
+<!--Posts-->
+<div id="allposts">
+    {% for obj in page_obj %}
+    <div style="border: solid 2px;">
+        <h1><a href="{% url 'profile' obj.user.id %}">{{obj.user}}</a></h1> <br>
+        {% if request.user.id == obj.user.id %} <!-- only author's of the posts can edit -->
+            <button class="edit">Edit</button> <br>
+        {% endif %}
+        <p><b data-id="{{obj.id}}">{{obj.post_content}}</b></p>
+        <p>{{obj.timestamp}}</p>
+ <!-- if user has liked the post -->
+        {% if obj in check_like and check_like %} <!-- if user has liked the post -->
+            <span class="red">❤️</span>
+            <span class="white" style="display: none;">🤍</span>
+        {% else %}
+            <span class="white">🤍</span>
+            <span class="red" style="display: none;">❤️</span>
+        {% endif %}
+        <b class="num_of_likes">{{obj.likepost.count}}</b>
+    </div>
+    {% endfor %}
+</div>

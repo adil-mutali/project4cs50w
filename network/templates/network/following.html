@@ -1,0 +1,20 @@
+{% extends 'network/layout.html' %}
+{% block head %}
+{% load static %}
+<script src="{% static 'network/layout.js' %}"></script>
+{% endblock %}
+
+
+
+{% block body %}
+<h1>Following</h1>
+<!-- following posts -->
+{% if check_follow %} <!--check if user has followings -->
+{% include "network/code.html" %}
+
+{% else %}
+<h1>No followings</h1>
+{% endif %}
+
+{% include "network/pagination.html" %}
+{% endblock %}

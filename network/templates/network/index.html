@@ -1,0 +1,26 @@
+{% extends "network/layout.html" %}
+{% block head %}
+{% load static %}
+<script src="{% static 'network/layout.js' %}"></script>
+
+<script src="{% static 'network/index.js' %}"></script>
+
+{% endblock %}
+
+
+
+{% block body %}
+
+<h1 id="all">All Posts</h1>
+
+<div id="newpost">
+    <h2>New Post</h2>
+    <textarea name="textfield" id="text" maxlength="1000"></textarea>
+    <button id="post">Post</button>
+</div>
+
+<!--Posts-->
+{% include "network/code.html" %}
+{% include 'network/pagination.html' %}
+
+{% endblock %}

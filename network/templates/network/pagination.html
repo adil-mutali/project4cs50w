@@ -1,0 +1,12 @@
+<!-- pagination.html -->
+<div id="prev">
+{% if page_obj.has_previous %}
+<a href="?page={{page_obj.previous_page_number}}"><button>Previous</button></a>
+{% endif %}
+</div>
+
+<div id="next">
+{% if page_obj.has_next %}
+<a href="?page={{page_obj.next_page_number}}"><button id="next">Next</button></a>
+{% endif %}
+</div>

@@ -1,0 +1,51 @@
+{% extends "network/layout.html" %}
+{% block head %}
+{% load static %}
+<script>
+    const followerId = {{user.id}};
+    const want_follow = {{want_follow.id}};
+    document.addEventListener("DOMContentLoaded", function (){
+        if (followerId === want_follow){ // user can't follow himself
+        document.querySelector("#follow").style.display = 'none';
+        document.querySelector("#unfollow").style.display = 'none';
+    }
+        if({{field}} === true){ //if user has followed 
+        document.querySelector("#follow").style.display = 'none';
+        }
+
+        else {
+        document.querySelector("#unfollow").style.display = 'none';
+
+        }
+    })
+
+</script>
+
+<script src="{% static 'network/layout.js' %}"></script>
+
+<script src="{% static 'network/profile.js' %}">
+
+</script>
+
+{% endblock %}
+
+{% block body %}
+
+<table id="table">
+    <tr>
+        <th>Followers</th>
+        <th></th>
+        <th>Followings</th>
+    </tr>
+    <tr>
+        <th id="follower">{{followers}}</th>
+        <th id="following">{{followings}}</th>
+    </tr>
+</table>
+<button id="follow">Follow</button>
+<button id="unfollow">Unfollow</button>
+
+{% include "network/code.html" %}
+
+{% include 'network/pagination.html' %}
+{% endblock %}
