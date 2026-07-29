@@ -115,7 +115,7 @@ class ModelsTestCase(TestCase):
         page_obj = response.context['page_obj']
         self.assertFalse(page_obj.has_next())
         self.assertTrue(page_obj.has_previous())
-        self.assertFalse(len(page_obj.object_list), 3) #change back to equal
+        self.assertEqual(len(page_obj.object_list), 3) #change back to equal
         
         
         
